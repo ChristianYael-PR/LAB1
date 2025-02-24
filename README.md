@@ -29,41 +29,6 @@ La solución implementada utiliza la conversión del número a una cadena para f
 
 ## **Implementación en C**  
 
-```c
-#include <stdio.h>
-#include <string.h>
-#include <stdbool.h>
-
-bool es_palindromo(int x) {
-    if (x < 0) return false;  // Paso 1: Si es negativo, no puede ser palíndromo
-
-    char str[12];  // Suficiente para almacenar un entero de 32 bits
-    sprintf(str, "%d", x);  // Paso 2: Convertir el número a cadena
-
-    int izquierda = 0, derecha = strlen(str) - 1;  // Inicialización
-
-    while (izquierda < derecha) {  // Paso 3: Comparar extremos
-        if (str[izquierda] != str[derecha])
-            return false;
-        izquierda++;
-        derecha--;
-    }
-    return true;
-}
-
-int main() {
-    int numero;
-    printf("Introduce un número entero: ");
-    scanf("%d", &numero);
-
-    if (es_palindromo(numero)) {
-        printf("El número %d es un palíndromo.\n", numero);
-    } else {
-        printf("El número %d no es un palíndromo.\n", numero);
-    }
-    return 0;
-}
-
 ## **Análisis de Complejidad**  
 - **Conversión del número a cadena:** O(N)  
 - **Comparación de caracteres:** O(N)  
@@ -106,4 +71,41 @@ Este método es eficiente para números pequeños y medianos, pero consume más 
 
 ## **Conclusión**  
 La implementación de la solución que verifica si un número es un palíndromo a través de la conversión a cadena es una estrategia clara y efectiva para abordar el problema. Este enfoque permite una comparación intuitiva de los caracteres, lo que simplifica la lógica del algoritmo. Sin embargo, es importante considerar las limitaciones en términos de uso de memoria y rendimiento para números muy grandes. Para aplicaciones donde el tamaño de los números es considerable, sería recomendable explorar métodos alternativos que eviten la conversión a cadena, optimizando así el uso de recursos y la eficiencia del algoritmo.
+
+```c
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+bool es_palindromo(int x) {
+    if (x < 0) return false;  // Paso 1: Si es negativo, no puede ser palíndromo
+
+    char str[12];  // Suficiente para almacenar un entero de 32 bits
+    sprintf(str, "%d", x);  // Paso 2: Convertir el número a cadena
+
+    int izquierda = 0, derecha = strlen(str) - 1;  // Inicialización
+
+    while (izquierda < derecha) {  // Paso 3: Comparar extremos
+        if (str[izquierda] != str[derecha])
+            return false;
+        izquierda++;
+        derecha--;
+    }
+    return true;
+}
+
+int main() {
+    int numero;
+    printf("Introduce un número entero: ");
+    scanf("%d", &numero);
+
+    if (es_palindromo(numero)) {
+        printf("El número %d es un palíndromo.\n", numero);
+    } else {
+        printf("El número %d no es un palíndromo.\n", numero);
+    }
+    return 0;
+}
+
+
 
